@@ -49,108 +49,71 @@ if "messages" not in st.session_state:
 if "uploaded_filename" not in st.session_state:
     st.session_state.uploaded_filename = None
 
-if "dark_mode" not in st.session_state:
-    st.session_state.dark_mode = False
-
-
-# =========================================================
-# THEME COLORS
-# =========================================================
-
-if st.session_state.dark_mode:
-
-    BG = "#212121"
-    SIDEBAR_BG = "#171717"
-    CARD_BG = "#242424"
-    INPUT_BG = "#2b2b2b"
-
-    TEXT_PRIMARY = "#eeeeee"
-    TEXT_SECONDARY = "#aaaaaa"
-    TEXT_MUTED = "#777777"
-
-    BORDER = "#3a3a3a"
-    BORDER_LIGHT = "#444444"
-
-else:
-
-    BG = "#ffffff"
-    SIDEBAR_BG = "#f7f7f8"
-    CARD_BG = "#ffffff"
-    INPUT_BG = "#ffffff"
-
-    TEXT_PRIMARY = "#202123"
-    TEXT_SECONDARY = "#777777"
-    TEXT_MUTED = "#999999"
-
-    BORDER = "#eeeeee"
-    BORDER_LIGHT = "#e1e1e1"
-
 
 # =========================================================
 # CUSTOM CSS
 # =========================================================
 
 st.markdown(
-    f"""
+    """
     <style>
 
     /* =====================================================
        GLOBAL
     ===================================================== */
 
-    .stApp {{
-        background: {BG};
-        color: {TEXT_PRIMARY};
-    }}
+    .stApp {
+        background: #ffffff;
+    }
 
-    .main .block-container {{
+    .main .block-container {
         max-width: 920px;
         padding-top: 1rem;
         padding-bottom: 7rem;
-    }}
+    }
 
-    #MainMenu {{
+    #MainMenu {
         visibility: hidden;
-    }}
+    }
 
-    footer {{
+    footer {
         visibility: hidden;
-    }}
+    }
 
-    header {{
+    header {
         background: transparent !important;
-    }}
+    }
 
 
     /* =====================================================
        SIDEBAR
     ===================================================== */
 
-    section[data-testid="stSidebar"] {{
-        background: {SIDEBAR_BG};
-        border-right: 1px solid {BORDER};
-    }}
+    section[data-testid="stSidebar"] {
+        background: #f7f7f8;
+        border-right: 1px solid #e5e5e5;
+    }
 
-    section[data-testid="stSidebar"] > div:first-child {{
+    section[data-testid="stSidebar"] > div:first-child {
         padding: 1rem 0.8rem;
-    }}
+    }
 
 
     /* =====================================================
        BRAND
     ===================================================== */
 
-    .brand-container {{
+    .brand-container {
         padding: 5px 7px 18px 7px;
-    }}
+    }
 
-    .brand-row {{
+    .brand-row {
         display: flex;
         align-items: center;
         gap: 10px;
-    }}
+    }
 
-    .brand-icon {{
+    .brand-icon {
         width: 36px;
         height: 36px;
 
@@ -163,31 +126,31 @@ st.markdown(
         background: #202123;
 
         font-size: 19px;
-    }}
+    }
 
-    .brand-title {{
+    .brand-title {
         font-size: 18px;
         font-weight: 700;
 
-        color: {TEXT_PRIMARY};
+        color: #202123;
 
         letter-spacing: -0.3px;
-    }}
+    }
 
-    .brand-subtitle {{
+    .brand-subtitle {
         font-size: 11px;
-        color: {TEXT_MUTED};
+        color: #8a8a8a;
 
         margin-top: 4px;
         margin-left: 46px;
-    }}
+    }
 
 
     /* =====================================================
        SIDEBAR SECTIONS
     ===================================================== */
 
-    .section-title {{
+    .section-title {
         margin-top: 21px;
         margin-bottom: 8px;
 
@@ -199,128 +162,128 @@ st.markdown(
         letter-spacing: 0.8px;
         text-transform: uppercase;
 
-        color: {TEXT_MUTED};
-    }}
+        color: #999999;
+    }
 
 
     /* =====================================================
        SIDEBAR BUTTONS
     ===================================================== */
 
-    section[data-testid="stSidebar"] .stButton > button {{
+    section[data-testid="stSidebar"] .stButton > button {
         width: 100%;
         min-height: 38px;
 
         border-radius: 8px;
 
-        border: 1px solid {BORDER_LIGHT};
+        border: 1px solid #dddddd;
 
-        background: {CARD_BG};
+        background: #ffffff;
 
-        color: {TEXT_PRIMARY};
+        color: #303030;
 
         font-size: 13px;
         font-weight: 500;
 
         transition: all 0.15s ease;
-    }}
+    }
 
-    section[data-testid="stSidebar"] .stButton > button:hover {{
-        background: {INPUT_BG};
-        border-color: {TEXT_MUTED};
-    }}
+    section[data-testid="stSidebar"] .stButton > button:hover {
+        background: #eeeeef;
+        border-color: #cccccc;
+    }
 
 
     /* =====================================================
        FILE UPLOADER
     ===================================================== */
 
-    [data-testid="stFileUploaderDropzone"] {{
-        background: {CARD_BG};
+    [data-testid="stFileUploaderDropzone"] {
+        background: #ffffff;
 
-        border: 1px dashed #888888;
+        border: 1px dashed #c9c9c9;
 
         border-radius: 10px;
-    }}
+    }
 
-    [data-testid="stFileUploaderDropzone"]:hover {{
-        border-color: {TEXT_MUTED};
-    }}
+    [data-testid="stFileUploaderDropzone"]:hover {
+        border-color: #999999;
+    }
 
 
     /* =====================================================
        DOCUMENT CARD
     ===================================================== */
 
-    .document-card {{
+    .document-card {
         margin-top: 10px;
 
         padding: 12px;
 
-        background: {CARD_BG};
+        background: #ffffff;
 
-        border: 1px solid {BORDER_LIGHT};
+        border: 1px solid #e1e1e1;
 
         border-radius: 10px;
-    }}
+    }
 
-    .document-name {{
+    .document-name {
         font-size: 12px;
 
         font-weight: 600;
 
-        color: {TEXT_PRIMARY};
+        color: #333333;
 
         overflow-wrap: anywhere;
-    }}
+    }
 
-    .document-ready {{
+    .document-ready {
         margin-top: 6px;
 
         font-size: 10px;
 
         color: #16a34a;
-    }}
+    }
 
-    .document-meta {{
+    .document-meta {
         margin-top: 3px;
 
         font-size: 10px;
 
-        color: {TEXT_MUTED};
-    }}
+        color: #999999;
+    }
 
 
     /* =====================================================
        CHAT HISTORY
     ===================================================== */
 
-    .history-item {{
+    .history-item {
         padding: 8px 9px;
 
         border-radius: 7px;
 
         font-size: 11px;
 
-        color: {TEXT_SECONDARY};
+        color: #555555;
 
         white-space: nowrap;
 
         overflow: hidden;
 
         text-overflow: ellipsis;
-    }}
+    }
 
-    .history-item:hover {{
-        background: {INPUT_BG};
-    }}
+    .history-item:hover {
+        background: #ececee;
+    }
 
 
     /* =====================================================
        MAIN HEADER
     ===================================================== */
 
-    .top-header {{
+    .top-header {
         display: flex;
 
         justify-content: space-between;
@@ -329,83 +292,57 @@ st.markdown(
 
         padding: 4px 0 13px 0;
 
-        border-bottom: 1px solid {BORDER};
+        border-bottom: 1px solid #eeeeee;
 
         margin-bottom: 20px;
-    }}
+    }
 
-    .top-brand {{
+    .top-brand {
         display: flex;
 
         align-items: center;
 
         gap: 8px;
-    }}
+    }
 
-    .top-logo {{
+    .top-logo {
         font-size: 18px;
-    }}
+    }
 
-    .top-title {{
+    .top-title {
         font-size: 15px;
 
         font-weight: 650;
 
-        color: {TEXT_PRIMARY};
-    }}
+        color: #333333;
+    }
 
-    .model-badge {{
+    .model-badge {
         padding: 5px 10px;
 
-        border: 1px solid {BORDER_LIGHT};
+        border: 1px solid #e4e4e4;
 
         border-radius: 20px;
 
-        background: {CARD_BG};
+        background: #fafafa;
 
         font-size: 10px;
 
-        color: {TEXT_SECONDARY};
-    }}
-
-
-    /* =====================================================
-       THEME BUTTON
-    ===================================================== */
-
-    .theme-button-container {{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }}
-
-    div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] > button {{
-        border-radius: 10px;
-        border: 1px solid {BORDER_LIGHT};
-        background: {CARD_BG};
-        color: {TEXT_PRIMARY};
-        font-size: 16px;
-        min-height: 38px;
-        transition: all 0.15s ease;
-    }}
-
-    div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] > button:hover {{
-        background: {INPUT_BG};
-        border-color: {TEXT_MUTED};
-    }}
+        color: #777777;
+    }
 
 
     /* =====================================================
        WELCOME
     ===================================================== */
 
-    .welcome-container {{
+    .welcome-container {
         text-align: center;
 
         padding-top: 15vh;
-    }}
+    }
 
-    .welcome-icon {{
+    .welcome-icon {
         width: 66px;
         height: 66px;
 
@@ -423,29 +360,29 @@ st.markdown(
         color: white;
 
         font-size: 30px;
-    }}
+    }
 
-    .welcome-brand {{
+    .welcome-brand {
         font-size: 15px;
 
         font-weight: 600;
 
-        color: {TEXT_SECONDARY};
+        color: #777777;
 
         margin-bottom: 5px;
-    }}
+    }
 
-    .welcome-title {{
+    .welcome-title {
         font-size: 28px;
 
         font-weight: 650;
 
-        color: {TEXT_PRIMARY};
+        color: #202123;
 
         letter-spacing: -0.6px;
-    }}
+    }
 
-    .welcome-description {{
+    .welcome-description {
         max-width: 540px;
 
         margin: 10px auto 0 auto;
@@ -454,151 +391,152 @@ st.markdown(
 
         line-height: 1.65;
 
-        color: {TEXT_SECONDARY};
-    }}
+        color: #777777;
+    }
 
 
     /* =====================================================
        FEATURE CARDS
     ===================================================== */
 
-    .feature-card {{
+    .feature-card {
         min-height: 110px;
 
         padding: 15px;
 
-        border: 1px solid {BORDER_LIGHT};
+        border: 1px solid #e6e6e6;
 
         border-radius: 12px;
 
-        background: {CARD_BG};
-    }}
+        background: #ffffff;
+    }
 
-    .feature-icon {{
+    .feature-icon {
         font-size: 18px;
 
         margin-bottom: 6px;
-    }}
+    }
 
-    .feature-title {{
+    .feature-title {
         font-size: 11px;
 
         font-weight: 650;
 
-        color: {TEXT_PRIMARY};
-    }}
+        color: #444444;
+    }
 
-    .feature-description {{
+    .feature-description {
         margin-top: 4px;
 
         font-size: 10px;
 
         line-height: 1.45;
 
-        color: {TEXT_MUTED};
-    }}
+        color: #999999;
+    }
 
 
     /* =====================================================
        CHAT MESSAGES
     ===================================================== */
 
-    [data-testid="stChatMessage"] {{
+    [data-testid="stChatMessage"] {
         padding: 15px 18px;
 
         border-radius: 12px;
 
         margin-bottom: 5px;
+    }
 
-        color: {TEXT_PRIMARY};
-    }}
-
-    [data-testid="stChatMessage"] p {{
+    [data-testid="stChatMessage"] p {
         font-size: 14px;
 
         line-height: 1.75;
-    }}
+    }
 
 
     /* USER */
 
     [data-testid="stChatMessage"]:has(
         [data-testid="chatAvatarIcon-user"]
-    ) {{
-        background: {INPUT_BG};
-    }}
+    ) {
+        background: #f7f7f8;
+    }
 
 
     /* ASSISTANT */
 
     [data-testid="stChatMessage"]:has(
         [data-testid="chatAvatarIcon-assistant"]
-    ) {{
-        background: {BG};
-    }}
+    ) {
+        background: #ffffff;
+    }
 
 
     /* =====================================================
        RESPONSE TYPE
     ===================================================== */
 
-    .response-type {{
+    .response-type {
         margin-bottom: 8px;
 
         font-size: 10px;
 
         font-weight: 500;
 
-        color: {TEXT_MUTED};
-    }}
+        color: #999999;
+    }
 
 
     /* =====================================================
        CHAT INPUT
     ===================================================== */
 
-    [data-testid="stChatInput"] {{
+    [data-testid="stChatInput"] {
         border-radius: 14px;
-    }}
+    }
 
-    [data-testid="stChatInput"] textarea {{
+    [data-testid="stChatInput"] textarea {
         font-size: 14px;
-    }}
+    }
 
 
     /* =====================================================
        CHAT DISCLAIMER
     ===================================================== */
 
-    .chat-disclaimer {{
-        width: 100%;
-        max-width: 920px;
+    /* =====================================================
+   CHAT DISCLAIMER
+===================================================== */
 
-        margin: -1px auto 0 auto;
+.chat-disclaimer {
+    width: 100%;
+    max-width: 920px;
 
-        text-align: center;
+    margin: -1px auto 0 auto;
 
-        font-size: 9px;
-        line-height: 1.4;
+    text-align: center;
 
-        color: {TEXT_MUTED};
+    font-size: 9px;
+    line-height: 1.4;
 
-        padding: 0 10px;
+    color: #999999;
 
-        pointer-events: none;
-    }}
+    padding: 0 10px;
 
+    pointer-events: none;
+}
 
     /* =====================================================
        DEVELOPER CREDIT
     ===================================================== */
 
-    .developer-credit {{
+    .developer-credit {
         margin-top: 14px;
 
         padding-top: 10px;
 
-        border-top: 1px solid {BORDER};
+        border-top: 1px solid #e5e5e5;
 
         text-align: center;
 
@@ -606,56 +544,47 @@ st.markdown(
 
         line-height: 1.5;
 
-        color: {TEXT_MUTED};
-    }}
+        color: #999999;
+    }
 
-    .developer-name {{
+    .developer-name {
         font-weight: 600;
 
-        color: {TEXT_SECONDARY};
-    }}
-
-
-    /* =====================================================
-       STREAMLIT TEXT
-    ===================================================== */
-
-    .stMarkdown,
-    .stCaption,
-    label {{
-        color: {TEXT_PRIMARY};
-    }}
+        color: #666666;
+    }
 
 
     /* =====================================================
        RESPONSIVE
     ===================================================== */
 
-    @media (max-width: 700px) {{
+    @media (max-width: 700px) {
 
-        .main .block-container {{
+        .main .block-container {
             padding-left: 1rem;
+
             padding-right: 1rem;
-        }}
+        }
 
-        .welcome-container {{
+        .welcome-container {
             padding-top: 8vh;
-        }}
+        }
 
-        .welcome-title {{
+        .welcome-title {
             font-size: 23px;
-        }}
+        }
 
-        .welcome-description {{
+        .welcome-description {
             font-size: 13px;
-        }}
+        }
 
-        .chat-disclaimer {{
+        .chat-disclaimer {
             width: 90%;
-            font-size: 8px;
-        }}
 
-    }}
+            font-size: 8px;
+        }
+
+    }
 
     </style>
     """,
@@ -977,60 +906,29 @@ with st.sidebar:
 # MAIN HEADER
 # =========================================================
 
-header_col1, header_col2 = st.columns(
-    [8, 1],
-    vertical_alignment="center"
-)
+st.html(
+    """
+    <div class="top-header">
 
+        <div class="top-brand">
 
-with header_col1:
-
-    st.html(
-        """
-        <div class="top-header">
-
-            <div class="top-brand">
-
-                <div class="top-logo">
-                    🔬
-                </div>
-
-                <div class="top-title">
-                    Rexa
-                </div>
-
+            <div class="top-logo">
+                🔬
             </div>
 
-            <div class="model-badge">
-                GPT-OSS-120B
+            <div class="top-title">
+                Rexa
             </div>
 
         </div>
-        """
-    )
 
+        <div class="model-badge">
+            GPT-OSS-120B
+        </div>
 
-with header_col2:
-
-    theme_icon = (
-        "☀️"
-        if st.session_state.dark_mode
-        else "🌙"
-    )
-
-
-    if st.button(
-        theme_icon,
-        key="theme_button",
-        help="Change theme",
-        use_container_width=True
-    ):
-
-        st.session_state.dark_mode = (
-            not st.session_state.dark_mode
-        )
-
-        st.rerun()
+    </div>
+    """
+)
 
 
 # =========================================================
