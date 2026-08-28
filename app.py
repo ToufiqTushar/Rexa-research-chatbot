@@ -60,16 +60,24 @@ st.markdown(
 
     /* =====================================================
        GLOBAL
+       NOTE: explicit `color` added everywhere a background
+       is set. Without this, Streamlit falls back to the
+       visitor's theme (light/dark), and on dark theme the
+       default text color is near-white -> invisible on our
+       white backgrounds. This is the root cause of the
+       "invisible text" bug.
     ===================================================== */
 
     .stApp {
         background: #ffffff;
+        color: #202123;
     }
 
     .main .block-container {
         max-width: 920px;
         padding-top: 1rem;
         padding-bottom: 7rem;
+        color: #202123;
     }
 
     #MainMenu {
@@ -84,6 +92,13 @@ st.markdown(
         background: transparent !important;
     }
 
+    /* Force base text color across common text elements */
+    .stApp, .stApp p, .stApp span, .stApp div, .stApp li,
+    .stApp label, .stApp h1, .stApp h2, .stApp h3,
+    .stApp h4, .stApp h5, .stApp h6 {
+        color: #202123;
+    }
+
 
     /* =====================================================
        SIDEBAR
@@ -92,6 +107,11 @@ st.markdown(
     section[data-testid="stSidebar"] {
         background: #f7f7f8;
         border-right: 1px solid #e5e5e5;
+        color: #202123;
+    }
+
+    section[data-testid="stSidebar"] * {
+        color: #202123;
     }
 
     section[data-testid="stSidebar"] > div:first-child {
@@ -204,6 +224,11 @@ st.markdown(
         border: 1px dashed #c9c9c9;
 
         border-radius: 10px;
+        color: #202123;
+    }
+
+    [data-testid="stFileUploaderDropzone"] * {
+        color: #202123;
     }
 
     [data-testid="stFileUploaderDropzone"]:hover {
@@ -452,6 +477,11 @@ st.markdown(
         font-size: 14px;
 
         line-height: 1.75;
+        color: #202123;
+    }
+
+    [data-testid="stChatMessage"] * {
+        color: #202123;
     }
 
 
@@ -490,14 +520,25 @@ st.markdown(
 
     /* =====================================================
        CHAT INPUT
+       This bar renders outside .stApp's normal flow in some
+       Streamlit versions and previously had NO color rule,
+       so it inherited the dark theme -> dark bar, invisible
+       typed text. Both background and text color pinned now.
     ===================================================== */
 
     [data-testid="stChatInput"] {
         border-radius: 14px;
+        background: #ffffff !important;
     }
 
     [data-testid="stChatInput"] textarea {
         font-size: 14px;
+        color: #202123 !important;
+        background: #ffffff !important;
+    }
+
+    [data-testid="stChatInput"] textarea::placeholder {
+        color: #999999 !important;
     }
 
 
@@ -505,27 +546,23 @@ st.markdown(
        CHAT DISCLAIMER
     ===================================================== */
 
-    /* =====================================================
-   CHAT DISCLAIMER
-===================================================== */
+    .chat-disclaimer {
+        width: 100%;
+        max-width: 920px;
 
-.chat-disclaimer {
-    width: 100%;
-    max-width: 920px;
+        margin: -1px auto 0 auto;
 
-    margin: -1px auto 0 auto;
+        text-align: center;
 
-    text-align: center;
+        font-size: 9px;
+        line-height: 1.4;
 
-    font-size: 9px;
-    line-height: 1.4;
+        color: #999999;
 
-    color: #999999;
+        padding: 0 10px;
 
-    padding: 0 10px;
-
-    pointer-events: none;
-}
+        pointer-events: none;
+    }
 
     /* =====================================================
        DEVELOPER CREDIT
